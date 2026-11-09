@@ -68,19 +68,25 @@ function App() {
     return (
         <div className="container">
             <Header total={clients.length} />
-            <ClientForm onAjouter={ajouterClient} />
             {message && <p className="message">{message}</p>}
-            <input
-                className="recherche"
-                placeholder="Rechercher par nom ou email..."
-                value={recherche}
-                onChange={(event) => setRecherche(event.target.value)}
-            />
-            <ClientList
-                clients={clientsFiltres}
-                onChangerStatut={changerStatut}
-                onSupprimer={supprimerClient}
-            />
+            <div className="carte">
+                <h2>Nouveau client</h2>
+                <ClientForm onAjouter={ajouterClient} />
+            </div>
+            <div className="carte">
+                <h2>Liste des clients</h2>
+                <input
+                    className="recherche"
+                    placeholder="Rechercher par nom ou email..."
+                    value={recherche}
+                    onChange={(event) => setRecherche(event.target.value)}
+                />
+                <ClientList
+                    clients={clientsFiltres}
+                    onChangerStatut={changerStatut}
+                    onSupprimer={supprimerClient}
+                />
+            </div>
         </div>
     );
 }
